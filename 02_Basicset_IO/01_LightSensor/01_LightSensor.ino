@@ -17,7 +17,7 @@ void loop() {
   // Change the threshold to suit your environment
   if (lux > 45) { 
     Serial.println("Bright");
-    delay(500);
+    delay(450);
   } else {
     Serial.println("Dark");
     delay(500);
