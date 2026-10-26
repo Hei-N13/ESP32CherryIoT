@@ -15,8 +15,8 @@ void loop() {
   digitalWrite(vibPin, HIGH);
   delay(1000);
   digitalWrite(vibPin, LOW);
-  } else {
-  Serial.println("...");
+  delay(1000);
+  ruptState = 0;
   }
   delay(500);
 
