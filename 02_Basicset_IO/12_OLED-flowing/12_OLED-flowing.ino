@@ -32,6 +32,19 @@ void loop()
     display.print(F("CherryIoT"));
 
     display.display();
+    display.clearDisplay();
+  }
+  for(int j=0; j<128; j++){
+
+    display.setTextSize(2);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(j, 25);
+    display.print(F("Hello"));
+    
+    display.display();
+    display.clearDisplay();
+
+
     delay(20);
   }
 }
