@@ -30,18 +30,19 @@ void loop() {
 
   if (Distance > 0.2) {
   Serial.println("CLOSE");
+          // 180-0  left 
+    for(int angle = 180; angle >= 0; angle--) {                 
+    myservo.write(angle);  
+    delay(30);      
+    }
+
   delay(500);
   } else {
-          // 0-90 right
+          // 0-180 right
     for(int angle = 0; angle <= 180; angle++) {                        
     myservo.write(angle);
-    delay(15);
-  }
-  // 90-0  left 
-  for(int angle = 180; angle >= 0; angle--) {                 
-    myservo.write(angle);  
-    delay(15);      
-  }
+    delay(30);
+    }
   Serial.println("OPEN");
   delay(500);
   }
