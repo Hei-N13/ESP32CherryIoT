@@ -110,7 +110,7 @@ bool playMusic(int musicMelody[], int totalNotes){
 
     ledcWriteTone(spkrPin, musicMelody[thisNote]);
 
-    for(int i = 0; i < 250; i = i + 10){
+    for(int i = 0; i < 80; i = i + 10){
       delay(10);
       digitalWrite(trigPin, LOW);
       delayMicroseconds(2);
