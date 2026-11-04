@@ -83,6 +83,7 @@ void loop() {
 
   if(Pisconpleted == false){
 
+
     while(Distance <= 0.2){
       delay(500);
       digitalWrite(trigPin, LOW);
@@ -132,27 +133,3 @@ bool playMusic(int musicMelody[], int totalNotes){
   ledcWriteTone(spkrPin, 0); 
   return true;
 }
-  // if(musicNo == 0){
-  // ledcWriteTone(spkrPin, 0); // no sound    
-  // }
-  // if(musicNo == 1){
-  // playmusic();  //FF-Prelude
-  // delay(1000);
-  // musiNo = 2;
-  // }
-  // if(musicNo == 2){
-  // doremi();
-  // delay(1000);
-  // musicNo = 3;
-  // }
-  // if(musicNo == 3){
-  // melodychime();
-  // delay(1000);
-  // musicNo = 4;
-  // }
-  // if(musicNo == 4){
-  // fryer();
-  // delay(1000);
-  // musicNo = 1;
-  // }
-
