@@ -53,7 +53,13 @@ int Prelude[] = {
 };
 int PnoteCount = sizeof(Prelude) / sizeof(Prelude[0]);
 
+int Doremi[] = {
+  DO, RE, MI, FA, SO, RA, TI, C5, 0
+};
+int DnoteCount = sizeof(Doremi) / sizeof(Doremi[0]);
+
 int currentPosition = 0;
+int currentsongNumber = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -81,9 +87,15 @@ void loop() {
   Serial.println("m");
   delay(500);
 
-  bool Pisconpleted = playMusic(Prelude, PnoteCount);
+  bool isCompleted = false;
 
-  if(Pisconpleted == false){
+  if(currentsongNumber == 0){
+    isCompleted = playMusic(Prelude, PnoteCount);
+  }else if(currentsongNumber == 1){
+    isCompleted = playMusic(Doremi, DnoteCount);
+  }
+
+  if(isCompleted == false){
 
 
     while(Distance <= 0.2){
@@ -98,6 +110,11 @@ void loop() {
       Duration = Duration/2; //Half the round trip time
       Distance = Duration*340*100/100000000; //Set sonic speed to 340 m/s
     }  
+  Serial.print("Distance:");
+  Serial.print(Distance);
+  Serial.println("m");
+  delay(500);
+  
     while (Distance > 0.2) { 
       delay(20);
       digitalWrite(trigPin, LOW);
@@ -109,7 +126,12 @@ void loop() {
       Duration = pulseIn(echoPin, HIGH); //Input from sensor
       Duration = Duration/2; //Half the round trip time
       Distance = Duration*340*100/100000000; //Set sonic speed to 340 m/s
-    }
+    }  
+  Serial.print("Distance:");
+  Serial.print(Distance);
+  Serial.println("m");
+  delay(500);
+
     while(Distance <= 0.2){
       delay(20);
       digitalWrite(trigPin, LOW);
@@ -127,6 +149,11 @@ void loop() {
   }
   else{
     currentPosition = 0;
+    currentsongNumber++;
+if (currentsongNumber > 1) {
+      currentsongNumber = 0; 
+    }    
+
     delay(5000);
   }
 }
